@@ -34,7 +34,7 @@ public class EmployeesController : ControllerBase
     public async Task<IActionResult> Create(CreateEmployeeRequest request)
     {
         int id = await _service.CreateAsync(request);
-        return CreatedAtAction(nameof(GetById), new { id }, null);
+        return Ok();
     }
 
     [HttpPut("{id}")]

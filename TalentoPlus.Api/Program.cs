@@ -17,9 +17,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     {
-        options.User.RequireUniqueEmail = true;  // Asegura que el correo sea único
+        options.User.RequireUniqueEmail = true;  
     })
-    .AddEntityFrameworkStores<AppDbContext>()  // Usa AppDbContext para Identity
+    .AddEntityFrameworkStores<AppDbContext>()  
     .AddDefaultTokenProviders();
 
 
@@ -54,7 +54,6 @@ builder.Services.AddAuthentication("JwtBearer")
         };
     });
 
-// Habilitar CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -111,11 +110,9 @@ using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    // Verificar si el usuario de prueba ya existe
     var testUser = await userManager.FindByEmailAsync("testuser@example.com");
     if (testUser == null)
     {
-        // Crear el usuario de prueba
         var user = new IdentityUser
         {
             UserName = "testuser",
@@ -124,7 +121,6 @@ using (var scope = app.Services.CreateScope())
 
         var result = await userManager.CreateAsync(user, "TestPassword123!"); // Contraseña de prueba
 
-        // Si el usuario se crea correctamente
         if (result.Succeeded)
         {
             Console.WriteLine("Usuario de prueba creado con éxito.");

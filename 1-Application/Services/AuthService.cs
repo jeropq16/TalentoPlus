@@ -24,7 +24,6 @@ public class AuthService : IAuthService
         if (employee == null)
             return null;  
 
-        // Verificar la contraseña usando BCrypt
         bool passwordOk = BCrypt.Net.BCrypt.Verify(request.Password, employee.PasswordHash);
         Console.WriteLine("===================================");
         Console.WriteLine($"Password Provided: {request.Password}");
