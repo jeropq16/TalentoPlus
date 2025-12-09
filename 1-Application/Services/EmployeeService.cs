@@ -4,6 +4,8 @@ using _2_Domain.Entities;
 using _2_Domain.Enums;
 using _2_Domain.Interfaces;
 using BCrypt.Net;
+using Microsoft.Extensions.Configuration;
+using TalentoPlus.Application.Services;
 
 namespace _1_Application.Services;
 
@@ -11,6 +13,8 @@ public class EmployeeService : IEmployeeService
 {
     private readonly IEmployeeRepository _employeeRepo;
     private readonly IDepartmentRepository _departmentRepo;
+    private readonly IConfiguration _config;
+    
 
     public EmployeeService(IEmployeeRepository employeeRepo, IDepartmentRepository departmentRepo)
     {
@@ -71,6 +75,9 @@ public class EmployeeService : IEmployeeService
 
         await _employeeRepo.AddAsync(employee);
         await _employeeRepo.SaveChangesAsync();
+        
+        var emailService = new EmailService(_config);
+        await emailService.SendWelcomeEmail(employee.Email, employee.PasswordHash);
 
         return employee.Id;
     }

@@ -1,5 +1,6 @@
 using _1_Application.DTOs;
 using _1_Application.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TalentoPlus.Api.Controllers;
@@ -9,19 +10,29 @@ namespace TalentoPlus.Api.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
-
-    public AuthController(IAuthService authService)
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly IJwtService _jwtService;
+    
+    public AuthController(IAuthService authService,  UserManager<IdentityUser> userManager, IJwtService jwtService)
     {
         _authService = authService;
+        _userManager = userManager;
+        _jwtService = jwtService;
+        
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(EmployeeLoginRequest request)
+    public async Task<IActionResult> Login([FromBody] EmployeeLoginRequest loginRequest)
     {
-        var result = await _authService.LoginAsync(request);
+        if (!ModelState.IsValid)
+            return BadRequest("Datos inválidos");
 
-        if (result == null) return Unauthorized(new { message = "Documento o contraseña incorrectos" });
+        var loginResponse = await _authService.LoginAsync(loginRequest);
 
-        return Ok(result);
+        if (loginResponse == null)
+            return Unauthorized("Documento o contraseña incorrectos");
+
+        return Ok(loginResponse);  
     }
+    
 }

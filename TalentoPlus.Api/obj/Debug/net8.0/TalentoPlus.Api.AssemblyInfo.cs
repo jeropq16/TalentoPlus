@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TalentoPlus.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1965b28c1f9b6af0ac7af4e75847587e93b3a63c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da7d700a829ecf90490bd37c81df116411fb6638")]
 [assembly: System.Reflection.AssemblyProductAttribute("TalentoPlus.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TalentoPlus.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

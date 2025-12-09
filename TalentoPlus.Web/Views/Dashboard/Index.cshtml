@@ -1,0 +1,15 @@
+@model TalentoPlus.Api.Models.DashboardResponse
+
+<h2>Dashboard</h2>
+
+<p>Total de empleados: @Model.TotalEmployees</p>
+<p>Empleados activos: @Model.ActiveEmployees</p>
+<p>Empleados inactivos: @Model.InactiveEmployees</p>
+<p>Salario promedio: @Model.AverageSalary</p>
+<p>Nómina total: @Model.TotalPayroll</p>
+
+<h3>Empleados por departamento</h3>
+@foreach (var dept in Model.EmployeesPerDepartment)
+{
+    <p>@dept.Department: @dept.Count</p>
+}

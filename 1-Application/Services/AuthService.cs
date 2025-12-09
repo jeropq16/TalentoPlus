@@ -2,6 +2,8 @@ using _1_Application.DTOs;
 using _1_Application.Interfaces;
 using _2_Domain.Interfaces;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace _1_Application.Services;
 
@@ -20,13 +22,19 @@ public class AuthService : IAuthService
     {
         var employee = await _employeeRepository.GetByDocumentoAsync(request.Documento);
         if (employee == null)
-            return null;
+            return null;  
 
+        // Verificar la contraseña usando BCrypt
         bool passwordOk = BCrypt.Net.BCrypt.Verify(request.Password, employee.PasswordHash);
+        Console.WriteLine("===================================");
+        Console.WriteLine($"Password Provided: {request.Password}");
+        Console.WriteLine($"Stored Password Hash: {employee.PasswordHash}");
+        Console.WriteLine($"Password Match: {passwordOk}");
+        Console.WriteLine("===================================");
         if (!passwordOk)
-            return null;
+            return null;  
 
-        string token = _jwtService.GenerateEmployeeToken(employee.Id, employee.Email);
+        string token = _jwtService.GenerateEmployeeToken(employee.Id.ToString(), employee.Email);
 
         return new EmployeeLoginResponse
         {
@@ -35,4 +43,5 @@ public class AuthService : IAuthService
             Email = employee.Email
         };
     }
+    
 }
