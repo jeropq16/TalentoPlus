@@ -30,7 +30,6 @@ public class DashboardService : IDashboardService
         var totalPayroll = employees.Sum(e => e.Salario);
         var averageSalary = employees.Count > 0 ? employees.Average(e => e.Salario) : 0;
 
-        // Empleados por departamento
         var departments = await _departmentRepo.GetAllAsync();
 
         var employeesPerDept = departments.Select(d => new DepartmentCount
