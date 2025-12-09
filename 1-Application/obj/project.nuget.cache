@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "UNbE71Q+2Oc=",
+  "success": true,
+  "projectFilePath": "/home/coders/Escritorio/TalentoPlus/1-Application/1-Application.csproj",
+  "expectedPackageFiles": [
+    "/home/coders/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
+    "/home/coders/.nuget/packages/exceldatareader/3.6.0/exceldatareader.3.6.0.nupkg.sha512",
+    "/home/coders/.nuget/packages/exceldatareader.dataset/3.6.0/exceldatareader.dataset.3.6.0.nupkg.sha512",
+    "/home/coders/.nuget/packages/microsoft.identitymodel.abstractions/7.5.2/microsoft.identitymodel.abstractions.7.5.2.nupkg.sha512",
+    "/home/coders/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.5.2/microsoft.identitymodel.jsonwebtokens.7.5.2.nupkg.sha512",
+    "/home/coders/.nuget/packages/microsoft.identitymodel.logging/7.5.2/microsoft.identitymodel.logging.7.5.2.nupkg.sha512",
+    "/home/coders/.nuget/packages/microsoft.identitymodel.tokens/7.5.2/microsoft.identitymodel.tokens.7.5.2.nupkg.sha512",
+    "/home/coders/.nuget/packages/openai-dotnet/7.0.0/openai-dotnet.7.0.0.nupkg.sha512",
+    "/home/coders/.nuget/packages/system.identitymodel.tokens.jwt/7.5.2/system.identitymodel.tokens.jwt.7.5.2.nupkg.sha512"
+  ],
+  "logs": []
+}
